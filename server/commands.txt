@@ -1,0 +1,11 @@
+-- CREATE VENV
+python3 -m venv .venv
+
+-- ACTIVATE VENV
+source .venv/bin/activate
+
+-- INSTALL REQUIREMENTS
+pip3 install -r requirements.txt
+
+-- FREEZE REQUIREMENTS
+pip3 freeze > requirements.txt

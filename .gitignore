@@ -1,0 +1,10 @@
+# FRONTEND
+node_modules/
+build/
+
+# BACKEND
+.venv/
+__pycache__/
+
+# ENVIRONMENT
+.env
