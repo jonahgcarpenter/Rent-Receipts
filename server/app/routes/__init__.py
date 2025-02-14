@@ -8,4 +8,4 @@ def register_routes(app):
     app.register_blueprint(frontend_bp)
 
     # USER ROUTES
-    app.register_blueprint(user_bp, url_prefix="/users")
+    app.register_blueprint(user_bp, url_prefix="/api/users")
