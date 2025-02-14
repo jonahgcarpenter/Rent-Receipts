@@ -1,6 +1,6 @@
 # FRONTEND
 node_modules/
-build/
+dist/
 
 # BACKEND
 .venv/
