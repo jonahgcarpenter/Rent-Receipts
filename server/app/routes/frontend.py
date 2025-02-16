@@ -1,3 +1,4 @@
+# server/app/routes
 from flask import Blueprint, current_app
 
 frontend_bp = Blueprint("frontend", __name__)
