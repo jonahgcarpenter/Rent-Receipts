@@ -1,4 +1,3 @@
-# server/app/routes
 from .auth import auth_bp
 from .frontend import frontend_bp
 

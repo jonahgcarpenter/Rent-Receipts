@@ -1,2 +1,1 @@
-# server/app/models
-from .users import User
+from .users import Users

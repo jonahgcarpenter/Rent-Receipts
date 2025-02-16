@@ -1,10 +1,9 @@
-# server/app/routes
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from app import db
-from app.models import User
+from app.models import Users
 
 auth_bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 
@@ -19,11 +18,11 @@ def register():
     if not username or not password:
         return jsonify({"msg": "Missing username or password"}), 400
 
-    if User.query.filter_by(username=username).first():
+    if Users.query.filter_by(username=username).first():
         return jsonify({"msg": "Username already exists"}), 400
 
     hashed_password = generate_password_hash(password)
-    new_user = User(username=username, password=hashed_password)
+    new_user = Users(username=username, password=hashed_password)
 
     db.session.add(new_user)
     db.session.commit()
@@ -41,7 +40,7 @@ def login():
     if not username or not password:
         return jsonify({"msg": "Missing username or password"}), 400
 
-    user = User.query.filter_by(username=username).first()
+    user = Users.query.filter_by(username=username).first()
     if not user or not check_password_hash(user.password, password):
         return jsonify({"msg": "Bad username or password"}), 401
 

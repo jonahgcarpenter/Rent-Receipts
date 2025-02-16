@@ -1,4 +1,3 @@
-# server/
 from app import create_app
 
 app = create_app()
@@ -8,5 +7,4 @@ if __name__ == "__main__":
 
 # TODO:
 
-# 1. Add User Authentication
-# 2. Link Users to Households
+# - Link Users to Households
