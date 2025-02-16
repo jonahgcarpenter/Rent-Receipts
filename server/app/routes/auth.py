@@ -14,15 +14,25 @@ def register():
     data = request.get_json()
     username = data.get("username")
     password = data.get("password")
+    firstName = data.get("firstName")
+    lastName = data.get("lastName")
 
-    if not username or not password:
-        return jsonify({"msg": "Missing username or password"}), 400
+    if not username or not password or not firstName or not lastName:
+        return (
+            jsonify({"msg": "Missing username, password, firstName, or lastName"}),
+            400,
+        )
 
     if Users.query.filter_by(username=username).first():
         return jsonify({"msg": "Username already exists"}), 400
 
     hashed_password = generate_password_hash(password)
-    new_user = Users(username=username, password=hashed_password)
+    new_user = Users(
+        username=username,
+        password=hashed_password,
+        firstName=firstName,
+        lastName=lastName,
+    )
 
     db.session.add(new_user)
     db.session.commit()
