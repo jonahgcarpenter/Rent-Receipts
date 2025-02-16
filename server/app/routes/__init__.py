@@ -1,5 +1,6 @@
 from .auth import auth_bp
 from .frontend import frontend_bp
+from .user_routes import user_bp
 
 
 def register_routes(app):
@@ -9,3 +10,6 @@ def register_routes(app):
 
     # AUTHENTICATION
     app.register_blueprint(auth_bp)
+
+    # USER ROUTES
+    app.register_blueprint(user_bp)
