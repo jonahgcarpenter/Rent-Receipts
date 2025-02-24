@@ -1,14 +1,12 @@
+from app import db
+from app.models import Users
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from app import db
-from app.models import Users
-
 auth_bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 
 
-# REGISTER ROUTE
 @auth_bp.route("/register", methods=["POST"])
 def register():
     data = request.get_json()
@@ -40,7 +38,6 @@ def register():
     return jsonify({"msg": "User created successfully"}), 201
 
 
-# LOGIN ROUTE
 @auth_bp.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
@@ -60,7 +57,6 @@ def login():
     return jsonify({"access_token": access_token, "refresh_token": refresh_token}), 200
 
 
-# LOGOUT ROUTE
 @auth_bp.route("/logout", methods=["POST"])
 @jwt_required()
 def logout():
