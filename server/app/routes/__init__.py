@@ -1,6 +1,7 @@
 from .auth import auth_bp
 from .frontend import frontend_bp
 from .household_routes import household_bp
+from .receipt_routes import receipt_bp
 from .user_routes import user_bp
 
 
@@ -17,3 +18,6 @@ def register_routes(app):
 
     # HOUSEHOLD ROUTES
     app.register_blueprint(household_bp)
+
+    # RECEIPT ROUTES
+    app.register_blueprint(receipt_bp)
