@@ -1,13 +1,15 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 // COMPONENTS
 import LoginForm from "../components/forms/LoginForm";
 import RegisterForm from "../components/forms/RegisterForm";
 
-function Landing() {
+const Landing: React.FC = () => {
   const [newUser, setNewUser] = useState<boolean>(false);
 
-  const toggleNewUser = () => setNewUser((prev) => !prev);
+  const toggleNewUser = (): void => {
+    setNewUser((prev) => !prev);
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 flex flex-col justify-center items-center">
@@ -21,6 +23,6 @@ function Landing() {
       </button>
     </div>
   );
-}
+};
 
 export default Landing;

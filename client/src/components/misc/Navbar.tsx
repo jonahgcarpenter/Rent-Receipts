@@ -1,13 +1,13 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function Navbar() {
+const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const toggleHamburger = () => setIsOpen((prev) => !prev);
+  const toggleHamburger = (): void => setIsOpen((prev) => !prev);
 
-  const handleLogout = () => {
+  const handleLogout = (): void => {
     // TODO: Implement logout logic
     navigate("/");
   };
@@ -18,27 +18,17 @@ function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo / Brand */}
           <div className="flex-shrink-0">
-            <Link to="/home" className="text-white text-2xl font-bold">
-              Rent Receipts
-            </Link>
+            <h1 className="text-white text-2xl font-bold">Rent Receipts</h1>
           </div>
           {/* Navigation Links */}
           <div className="hidden md:block">
             <ul className="ml-10 flex items-baseline space-x-4">
               <li>
                 <Link
-                  to="/home"
+                  to="/dashboard"
                   className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition"
                 >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/household"
-                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition"
-                >
-                  Household
+                  Dashboard
                 </Link>
               </li>
               <li>
@@ -81,18 +71,10 @@ function Navbar() {
           <ul className="px-2 pt-2 pb-3 space-y-1">
             <li>
               <Link
-                to="/home"
+                to="/dashboard"
                 className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition"
               >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/household"
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition"
-              >
-                Household
+                Dashboard
               </Link>
             </li>
             <li>
@@ -108,5 +90,6 @@ function Navbar() {
       )}
     </nav>
   );
-}
+};
+
 export default Navbar;
